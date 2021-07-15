@@ -1,6 +1,5 @@
-var count = 0;
-
 function reduceNum(num) {
+    var count = 0;
     while (num > 0) {
         if (num % 2 == 0) {
             num = num/2;
@@ -10,6 +9,4 @@ function reduceNum(num) {
             count++;
         }
     } return count;
-};  
-console.log(reduceNum(100));
-
+};
