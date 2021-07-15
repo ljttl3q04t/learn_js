@@ -1,4 +1,5 @@
 function reduceNum(num) {
+    var count = 0;
     while (num > 0) {
         if (num % 2 == 0) {
             num = num/2;
