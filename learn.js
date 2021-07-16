@@ -1,29 +1,35 @@
-// function reduceNum(num) {
-//     var count = 0;
-//     while (num > 0) {
-//         if (num % 2 == 0) {
-//             num = num/2;
-//             count++;
-//         } else if (num % 2 != 0) {
-//             num--;
-//             count++;
-//         }
-//     } return count;
-// };  
-
-// count = 1;
-// sum = 0;
-// function recursive() {
-//     console.log(count, sum);
-//     if (count > 5) return;
-//     sum = sum + count;
-//     count++;
-//     recursive()
-
+// function reduceNum(num, count) {
+//     console.log(num,count);
+//     if (num == 0) {
+//         return;
+//     } else if (num % 2 != 0) {
+//         num--;
+//     } else {
+//         num = num / 2;
+//     }
+//     count++; 
+//     return reduceNum(num, count);
 // };
 
-// recursive();
+// reduceNum(100,0);
+// reduceNum(100,0);
 
+// Use recursive in function reduceNum 
+//-------------------------------------------------------------------------------//
+
+// function recursive(count, sum) {
+//     console.log(count, sum);
+//     if (count > 5) return;
+//     sum += count;
+//     count++;
+//     recursive(count++, sum++);
+// };
+
+// recursive(1,0);
+// recursive(1,0);
+
+// Rewrite function recursive 
+//-------------------------------------------------------------------------------//
 
 // cal sum from a..b
 // assume a <= b
@@ -33,12 +39,15 @@
 
 const sum = (a, b) => {
     console.log('we are', a, b);
-    count = (a % 2 == 1) ? a : 0
+    count = (a % 2 == 1) ? a : 0;
     if (a == b) return count;
     return count + sum(a + 1, b);
 };
-// sum(a, b) = a + sum(a+1,b)
-//  sum(1, 10) = 1 + sum(2,10)
-console.log(sum(2, 7));
+
+// sum(a, b) = a + sum(a+1, b)
+// sum(1, 10) = 1 + sum(2, 10)
+// sum(1, 7) = 1 + sum(2, 6) + 7
+// console.log(sum(1, 7));
 // console.log(sum(2, 7));
+// console.log(sum(1, 8));
 // console.log(sum(6, 8));
