@@ -1,18 +1,20 @@
-// function reduceNum(num, count) {
-//     console.log(num,count);
-//     if (num == 0) {
-//         return;
-//     } else if (num % 2 != 0) {
-//         num--;
-//     } else {
-//         num = num / 2;
-//     }
-//     count++; 
-//     return reduceNum(num, count);
-// };
+function reduceNum(num) {
+    var count = 0;
+    function recursive(num) {
+        if (num == 0) {
+            return count; 
+        } else if (num % 2 != 0) {
+            num--;
+        } else {
+            num = num / 2;
+        }
+        count++; 
+        return recursive(num);
+    }; 
+    return recursive(num);
+};
 
-// reduceNum(100,0);
-// reduceNum(100,0);
+console.log(reduceNum(100)); // expect 9
 
 // Use recursive in function reduceNum 
 //-------------------------------------------------------------------------------//
@@ -37,12 +39,12 @@
 // output: 9
 // explain: 1 + 3 + 5 = 9
 
-const sum = (a, b) => {
-    console.log('we are', a, b);
-    count = (a % 2 == 1) ? a : 0;
-    if (a == b) return count;
-    return count + sum(a + 1, b);
-};
+// const sum = (a, b) => {
+//     console.log('we are', a, b);
+//     count = (a % 2 == 1) ? a : 0;
+//     if (a == b) return count;
+//     return count + sum(a + 1, b);
+// };
 
 // sum(a, b) = a + sum(a+1, b)
 // sum(1, 10) = 1 + sum(2, 10)
