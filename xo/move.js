@@ -1,0 +1,6 @@
+const botMove = () => {
+
+}
+
+const humanMove = () => {
+}
