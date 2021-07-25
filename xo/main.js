@@ -1,4 +1,4 @@
-const inputReader = require('wait-console-input')
+const inputReader = require('wait-console-input');
 
 const WIN_CONDITION = [
 	[0, 1, 2],
@@ -11,13 +11,45 @@ const WIN_CONDITION = [
 	[6, 4, 2]
 ];
 
+const Color = {
+    red: "\x1b[31m",
+    yellow: "\x1b[33m",
+    end: "\x1b[0m",
+}
+
+//  primitive obsession => should avoid
+// const RED =  "\x1b[31m";
+// const YELLOW = "\x1b[33m";
+// const END = "\x1b[0m";
+
+function displayWithColor(s, color) {
+    switch (color) {
+        case "red":
+            return Color.red + s + Color.end;
+        case "yellow":
+            return Color.yellow + s + Color.end;
+        default:
+            return s;
+    };
+};
+
 const displayBoard = (board) => {
+    let t = (v) => {
+        if (v == 'X') {
+            return displayWithColor(v, "red");
+        }
+        if (v == 'O') {
+            return displayWithColor(v, "yellow");
+        }
+        return displayWithColor(v);
+    }
+
     console.log('-------------');
-    console.log(`| ${board[0]} | ${board[1]} | ${board[2]} |`);
+    console.log(`| ${t(board[0])} | ${t(board[1])} | ${t(board[2])} |`);
     console.log('-------------');
-    console.log(`| ${board[3]} | ${board[4]} | ${board[5]} |`);
+    console.log(`| ${t(board[3])} | ${t(board[4])} | ${t(board[5])} |`);
     console.log('-------------');
-    console.log(`| ${board[6]} | ${board[7]} | ${board[8]} |`);
+    console.log(`| ${t(board[6])} | ${t(board[7])} | ${t(board[8])} |`);
     console.log('-------------');
 };
 
@@ -42,6 +74,9 @@ function initBoard() {
 };
 
 function botMove(board) {
+    // decorating
+    console.log("CPU make a move!");
+
     let available_cells = board.filter(b => b != "X" && b != "O");
     let index = Math.floor(Math.random() * available_cells.length);
     let cell = available_cells[index];
@@ -55,10 +90,22 @@ function humanMove(board) {
         separator: 'enter',
         size: 1
     }); 
-    board[index - 1] = "O"
-    return board
+    if (board[index - 1] != "X" && board[index - 1] != "O") {
+        board[index - 1] = "O";
+        return board;
+    } else {
+        console.log("Invalid move! Please play again!");
+        return humanMove(board);
+    };
 };
 
+function displayWinner(winner) {
+    if (winner == "X") {
+        console.log(displayWithColor("End Game! Result: Com win", "red"));
+    } else if (winner == "O") {
+        console.log(displayWithColor("End Game! Result: You win", "yellow"));
+    } else console.log(winner);
+};
 
 const main = () => {
     var board = initBoard();
@@ -78,7 +125,7 @@ const main = () => {
             break;
         };
     };
-    console.log(winner)
+    displayWinner(winner);
 };
 
 main();
