@@ -58,6 +58,7 @@ class Board extends React.Component {
       }
       return (
         <div>
+          <h1 className='title'>TIC TAC TOE</h1>
           <div className='status'>{status}</div>
           <div className="row">
             {this.click(0)}

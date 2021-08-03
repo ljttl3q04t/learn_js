@@ -1,6 +1,0 @@
-const botMove = () => {
-
-}
-
-const humanMove = () => {
-}
