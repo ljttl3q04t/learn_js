@@ -8,8 +8,15 @@ class Main extends React.Component {
             <div >
                 <div >
                     <Broad />
+                    <center>
+                        <button
+                            style={{ height: '50px', width: '100px', marginTop: '32px' }}
+                        >
+                            Restart Game
+                        </button>
+                    </center>
                 </div>
-            </div>
+            </div >
         )
     }
 }
