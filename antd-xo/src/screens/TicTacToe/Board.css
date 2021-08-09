@@ -1,0 +1,14 @@
+.Game {
+    padding-top: 24%;
+}
+.Row-container {
+    border-bottom: 4px solid;
+    height: 100px;
+    width: 300px;
+}
+.Col-container {
+    padding: 5%;
+    border-left: 4px solid;
+}
+  
+  
