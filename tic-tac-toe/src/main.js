@@ -1,24 +1,14 @@
-import Broad from './board';
-import React from 'react';
+import Board from './board';
 import './index.css';
 
-class Main extends React.Component {
-    render() {
+function Main() {
         return (
             <div >
                 <div >
-                    <Broad />
-                    <center>
-                        <button
-                            style={{ height: '50px', width: '100px', marginTop: '32px' }}
-                        >
-                            Restart Game
-                        </button>
-                    </center>
+                    <Board/>
                 </div>
             </div >
         )
-    }
 }
 
 
