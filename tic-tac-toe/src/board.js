@@ -27,13 +27,9 @@ const checkEndGame = (squares) => {
 };
 
 class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    this.restart = this.restart.bind(this);
-    this.state = {
+  state = {
       squares: Array(9).fill(null),
       X: true
-    }
   }
 
   onClick(e) {
@@ -50,7 +46,7 @@ class Board extends React.Component {
       <Click value={this.state.squares[e]} onClick={() => this.onClick(e)} />)
   }
 
-  restart() {
+  restart = () => {
     this.setState({ squares: Array(9).fill(null), X: true })
   }
 
